@@ -27,11 +27,12 @@ public class UserController {
     }
 
     //este endpoint permite a todos los usuarios chequear facturas
-    @GetMapping("/billsPerUser/{userId}")
+    @GetMapping("/allBillsPerUser/{userId}")
     public ResponseEntity<User> findAllUsers(@PathVariable String userId) {
         return ResponseEntity.ok(userService.findAllBillsPerUser(userId));
     }
     //este endpoint solo permite a los usuarios chequear sus propias facturas
+    //se agregó este endpoint para mostrar como con la anotación Authentication Principal se pueden implementar controles usando el JWT
     @GetMapping("/billsPerUser/only/{userId}")
     public ResponseEntity<User> findMyBills(@PathVariable String userId,@AuthenticationPrincipal Jwt source) {
         String id = (String) source.getClaims().get("sub");
