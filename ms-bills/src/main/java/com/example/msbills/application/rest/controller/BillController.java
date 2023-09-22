@@ -21,6 +21,7 @@ public class BillController {
     }
 
     @GetMapping("/perUser/{userId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Bill>> getAlBillsByUserId(@PathVariable String userId) {
         return ResponseEntity.ok().body(service.getAllBillsByUserId(userId));
     }

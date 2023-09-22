@@ -5,7 +5,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/examen-final
+          issuer-uri: http://localhost:8080/realms/bills-system
       client:
         registration:
           keycloak:
@@ -15,7 +15,7 @@ spring:
             provider: keycloak
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/examen-final
+            issuer-uri: http://localhost:8080/realms/bills-system
 
 eureka:
   instance:
@@ -27,7 +27,7 @@ eureka:
 
 dh:
   keycloak:
-    realm: examen-final
+    realm: bills-system
     serverUrl: http://localhost:8080
     clientId: users-client
     clientSecret: RMp4lW2gGOAh9fot6zrqpgxpXy084PMf
