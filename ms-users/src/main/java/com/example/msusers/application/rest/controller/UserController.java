@@ -26,13 +26,14 @@ public class UserController {
         return ResponseEntity.ok(userService.findAll(enabled));
     }
 
+    //este endpoint permite a todos los usuarios chequear facturas
     @GetMapping("/billsPerUser/{userId}")
     public ResponseEntity<User> findAllUsers(@PathVariable String userId) {
         return ResponseEntity.ok(userService.findAllBillsPerUser(userId));
     }
     //este endpoint solo permite a los usuarios chequear sus propias facturas
-    @GetMapping("/billsPerUser/vanina/{userId}")
-    public ResponseEntity<User> findAllUsersVanina(@PathVariable String userId,@AuthenticationPrincipal Jwt source) {
+    @GetMapping("/billsPerUser/only/{userId}")
+    public ResponseEntity<User> findMyBills(@PathVariable String userId,@AuthenticationPrincipal Jwt source) {
         String id = (String) source.getClaims().get("sub");
         if (userId.equalsIgnoreCase(id)) {
             return ResponseEntity.ok(userService.findAllBillsPerUser(userId));
